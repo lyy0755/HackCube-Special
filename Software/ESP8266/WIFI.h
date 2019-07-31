@@ -1,9 +1,5 @@
-char* ssid = "hackcube";
-char* password = "hackcube";
-
-
-//String AP_Name;
 #include "stdlib_noniso.h"
+#include "wificonfig.h"
 
 const bool debug = true;
 void sendHeader(int code, String type, size_t _size) {
@@ -57,23 +53,8 @@ void ResultsJSON() {
   apScan.getResultsJSON();
 }
 
-
-
-String   getmac() {
-  byte mac[8] ;
-  String MACS = "HackCUBESpecial_";
-  WiFi.macAddress(mac);
-  for (int i = 3; i < 6; i++) {
-    if (mac[i] < 0x10) {
-      MACS += "0";
-    }
-    //itoa(0xaa, MACB, 16);
-    MACS += String(mac[i], HEX);
-  }
-  return MACS;
-}
 void ConnectWif() {
-  WiFi.begin(ssid, password);
+  WiFi.begin(apname, appassword);
   while (WiFi.status() != WL_CONNECTED ) {
     delay(500);
     Serial.print(".");
@@ -85,17 +66,15 @@ void ConnectWif() {
 }
 
 void ConfigWifi() {
-  IPAddress local_IP(192, 168, 5, 1);
-  IPAddress gateway(192, 168, 5, 1);
+  IPAddress local_IP(192, 168, 36, 1);
+  IPAddress gateway(192, 168, 36, 1);
   IPAddress subnet(255, 255, 255, 0);
   WiFi.mode(WIFI_AP);
-  String AP_Name = getmac();
   Serial.print("SSID:");
-  Serial.println(AP_Name);
   Serial.print("Setting soft-AP configuration ... ");
   Serial.println(WiFi.softAPConfig(local_IP, gateway, subnet) ? "Ready" : "Failed!");
   Serial.print("Setting soft-AP ... ");
-  Serial.println(WiFi.softAP(AP_Name.c_str(), "hackcube") ? "Ready" : "Failed!");
+  Serial.println(WiFi.softAP(ssid, password) ? "Ready" : "Failed!");
   Serial.print("Soft-AP IP address = ");
   Serial.println(WiFi.softAPIP());
   delay(100);
@@ -105,7 +84,7 @@ void connectWifi() {
   unsigned long outtime = millis();
   bool outflag = false;
   WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
+ WiFi.begin(apname, appassword);
   while (WiFi.status() != WL_CONNECTED && !outflag) {
     delay(500);
     Serial.print(".");
@@ -123,4 +102,3 @@ void connectWifi() {
     Serial.println(WiFi.localIP());
   }
 }
-
