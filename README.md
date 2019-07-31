@@ -1,3 +1,11 @@
+#  更新
+> 1.可以自定义wifi的ssid和passwrod（通过读写config.json文件）
+>
+> 2.可以自定义中继wifi的ssid和passwrod（通过读写config.json文件）
+>
+> 3.把wifi页面重新显示
+
+
 #  HackCube-Special
 <p align="center"><img alt="PICTURE logo" src="https://file-temp.oss-cn-beijing.aliyuncs.com/cube.png" width="200"></p>
 <p align="center"> 
