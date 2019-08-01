@@ -1,19 +1,35 @@
 
 #  HackCube-Special
-<p align="center"><img alt="PICTURE logo" src="https://file-temp.oss-cn-beijing.aliyuncs.com/cube.png" width="200"></p>
-<p align="center"> 
-💰 <a href="https://shop142307030.taobao.com/?spm=a230r.7195193.1997079397.2.8gOnKF">购买</a> | 
-📖 <a href="https://github.com/UnicornTeam/hackcube-mini/wiki">资料文档</a> | 
-🌐  <a href="https://unicorn.360.com/hackcube">社区</a><br>
-<br>
-</p>
 
 #  更新
-> 1.可以自定义wifi的ssid和passwrod（通过读写config.json文件）
+> 1.增加自定义wifi的ssid和passwrod（通过读写config.json文件）
 >
-> 2.可以自定义中继wifi的ssid和passwrod（通过读写config.json文件）
+> 2.增加自定义中继wifi的ssid和passwrod（通过读写config.json文件）
 >
-> 3.把wifi页面重新显示
+> 3.增加自定义IP地址通过读写config.json文件）
+>
+> 4.删除原有内置gz的网页文件，改为data目录上传（可以直接修改web文件）
+>
+> 5.把wifi.html页面重新显示
+>
+> 6.修改调试接口为当前接口，通过工具->串口监视器，可以查看调试信息
+
+## 安装方法
+
+> 1.安装加载库ArduinoJson6.0以上版本（项目->加载库->管理库->搜索）
+>
+> 2.安装上传<你的Arduino目录>/tools/ESP8266FS/tool/esp8266fs.jar（注意：上传不可以和串口监视器一起用）
+>![Screenshot](upload.jpg)
+> 
+> 
+## 附加下载地址
+> 1.arduino : https://www.arduino.cc/
+>
+
+## 参考
+> 1.https://tttapa.github.io/ESP8266/Chap11%20-%20SPIFFS.html
+>
+> 2.文件上传 : https://github.com/esp8266/arduino-esp8266fs-plugin
 
 ##  使用
 > 1.将HackCube Special 电源拨码打开。状态灯显示蓝色为正常
