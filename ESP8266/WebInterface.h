@@ -299,8 +299,8 @@ void WebInterface() {
     }
     // Close the file
     file.close();
-    ESP.restart();
     Serial.println(ips);
+    ESP.restart();
   });
 
   server.on("/wificonfig", []() {
@@ -322,8 +322,8 @@ void WebInterface() {
     }
     // Close the file
     file.close();
-    ESP.restart();
     Serial.println(ssid);
+    ESP.restart();
   });
 
   server.on("/apwificonfig", []() {
@@ -345,13 +345,13 @@ void WebInterface() {
     }
     // Close the file
     file.close();
-    ESP.restart();
     Serial.println(apssid);
+    ESP.restart();
   });
 
-server.on("/reset", []() {
-    ESP.restart();
+server.on("/restart", []() {
     Serial.println("restart ok!");
+    ESP.restart();
   });
   
   server.onNotFound([]() {

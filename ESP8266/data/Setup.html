@@ -859,7 +859,8 @@
 <script src="js/prompt.js"></script>
 <script>
     function restart(){
-        ajax.open('get','/reset');
+        var ajax = new XMLHttpRequest();
+        ajax.open('get','/restart');
         ajax.send();
     }
     function ipconfig(){
