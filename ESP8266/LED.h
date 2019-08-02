@@ -3,6 +3,7 @@
 
 #define NUM_LEDS 1
 #define DATA_PIN 2
+#define lednum 18
 CRGB leds[NUM_LEDS];
 #define UPDATES_PER_SECOND 100
 
@@ -21,7 +22,7 @@ void colorPaletts_setup() {
 
 void FillLEDsFromPaletteColors( uint8_t colorIndex)
 {
-  uint8_t brightness = 255;
+  uint8_t brightness = lednum;
 
   for ( int i = 0; i < NUM_LEDS; i++) {
     leds[i] = ColorFromPalette( currentPalette, colorIndex, brightness, currentBlending);
@@ -217,7 +218,8 @@ void LED_Color(int r, int g, int b) {
 
 void Brightnessset(int Brightness) {
   //fill_solid(leds, NUM_LEDS, CRGB(r, g, b));
-  FastLED.setBrightness(Brightness);
+  
+  FastLED.setBrightness(Brightness>lednum?lednum:Brightness);
   FastLED.show();
 }
 
@@ -231,13 +233,11 @@ bool LED_Prompt;
 void LED_SHOW() {
   if (led_action == 1) {
     float breath = (exp(sin(millis() / 4000.0 * PI)) - 0.36787944) * 108.0;
-    FastLED.setBrightness(breath);
+    Brightnessset(breath);
     //Serial.println(breath);
-    FastLED.show();
   } else if (led_action == 2) {
     float breath = (exp(sin(millis() / 2500.0 * PI)) - 0.36787944) * 108.0;
-    FastLED.setBrightness(breath);
-    FastLED.show();
+    Brightnessset(breath);
     //Serial.println(breath);
     if (breath < 0.01) {
       //Serial.println(breath);
@@ -256,8 +256,7 @@ void LED_SHOW() {
   } else if (led_action == 6) {
     LED_Color(255, 0, 0);
     float breath = (exp(sin(millis() / 4000.0 * PI)) - 0.36787944) * 108.0;
-    FastLED.setBrightness(breath);
-    FastLED.show();
+    Brightnessset(breath);
   }
 
   if (LED_Prompt) {

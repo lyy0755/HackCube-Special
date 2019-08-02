@@ -49,7 +49,7 @@ APScan apScan;
 
 
 
-#define DEBUG;
+//#define DEBUG;
 ESP8266WebServer server(80);
 
 #include "LED.h"
@@ -72,6 +72,7 @@ void setup() {
   //ConnectWif();
   delay(100);
   LED_STATE(LED_RUN);
+  Serial.swap(); //将串口切换到和ATmega32u4通信串口中
   WebInterface(); //初始化网页端接口
   server.begin(); 
   delay(100);
