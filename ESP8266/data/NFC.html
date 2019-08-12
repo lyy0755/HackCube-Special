@@ -1109,6 +1109,21 @@
         .progress-bar-danger {
             background-color: #e74c3c;
         }
+        .warnning-wrapper {
+            background-image: url("image/warn.png");
+            background-position: center center;
+            height: 200px;
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        .warnning-close-btn {
+            position: absolute;
+            top: 0px;
+            right: calc(50% - 150px);
+            font-size: 18px;
+            color: orange;
+        }
         .botton-wrapper {
             background-image: url("image/logo.png");
             background-position: center center;
@@ -1125,14 +1140,15 @@
 <div class="container">
     <ul class="nav nav-tabs">
         <li><a href="WIFI.html">WIFI</a></li>
-        <li class="active"><a href="NFC.html">LF</a></li>
+        <li class="active"><a href="NFC.html">NFC</a></li>
         <li><a href="RF.html">RF</a></li>
         <li><a href="HID.html">HID</a></li>
         <li><a href="Setup.html">Setup</a></li>
     </ul>
 
     </br>
-
+    <div class="" id="Warning_action">
+    </div>
     <div class="alert alert-dismissible alert-success" id="nfc_action" hidden>
         <button type="button" class="close" id="nfc_close">&times;</button>
         <h4 class="alert-heading">NFC</h4>
@@ -1218,7 +1234,7 @@
                 </div>
             </div>
         </div>
-
+    <button onclick="nfc_clear()" type="submit" class="btn btn-info">NFC clear</button>
     <div class='container-fluid'>
         <div style="display:inline-block;float:left;"><h2>模拟检测(测试)</h2>
         </div>
@@ -1411,7 +1427,12 @@ document.getElementById("NFC_simulate").addEventListener('click', function(){
     
 });
 
-
+function nfc_clear(){
+        var ajax = new XMLHttpRequest();
+        ajax.open('get','/nfc_clear');
+        ajax.send();
+        location.reload();
+}
 function NFC_stop(){
         var ajax = new XMLHttpRequest();
         ajax.open('get','nfc_stop' );

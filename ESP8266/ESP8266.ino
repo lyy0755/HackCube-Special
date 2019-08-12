@@ -46,9 +46,6 @@
 MDNSResponder mdns;
 APScan apScan;
 
-
-
-
 //#define DEBUG;
 ESP8266WebServer server(80);
 
@@ -73,6 +70,7 @@ void setup() {
   delay(100);
   LED_STATE(LED_RUN);
   Serial.swap(); //将串口切换到和ATmega32u4通信串口中
+  delay(100);
   WebInterface(); //初始化网页端接口
   server.begin(); 
   delay(100);

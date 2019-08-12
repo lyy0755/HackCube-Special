@@ -1,5 +1,4 @@
 
-
 String getContentType(String filename) {
   if (server.hasArg("download")) return "application/octet-stream";
   else if (filename.endsWith(".htm")) return "text/html";
@@ -78,6 +77,12 @@ void WebInterface() {
     LED_STATE(LED_RUN);
   });
 
+  //nfc_clear
+  server.on("/nfc_clear", []() {
+    NFCnum = 0;
+    server.send(200, "text/html", "nfc clear ok!");
+  });
+  
   server.on("/nfc_attack", []() {
     int VD = server.arg("vd").toInt();
     unsigned long  START = strtoul(server.arg("start").c_str(), NULL, 10);

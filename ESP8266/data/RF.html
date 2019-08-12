@@ -978,6 +978,21 @@
             transform: translateX(20px);
             -webkit-transform: translateX(20px);
         }
+    .warnning-wrapper {
+        background-image: url("image/warn.png");
+        background-position: center center;
+        height: 200px;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+    .warnning-close-btn {
+        position: absolute;
+        top: 0px;
+        right: calc(50% - 150px);
+        font-size: 18px;
+        color: orange;
+    }
     .botton-wrapper {
         background-image: url("image/logo.png");
         background-position: center center;
@@ -993,13 +1008,15 @@
 <div class="container">
     <ul class="nav nav-tabs">
         <li><a href="WIFI.html">WIFI</a></li>
-        <li><a href="NFC.html">LF</a></li>
+        <li><a href="NFC.html">NFC</a></li>
         <li class="active"><a href="RF.html">RF</a></li>
         <li><a href="HID.html">HID</a></li>
         <li><a href="Setup.html">Setup</a></li>
     </ul>
 
     </br>
+    <div class="" id="Warning_action">
+    </div>
 
     <div class="alert alert-dismissible alert-success" id="nfc_action" hidden>
         <button type="button" class="close" id="nfc_close">&times;</button>
